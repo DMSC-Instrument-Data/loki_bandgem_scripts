@@ -1,7 +1,7 @@
 import csv
 import numpy
 import os
-
+from mantid.simpleapi import CreateWorkspace, LoadInstrument, SaveNexus
 
 class ConvertLokiRuns(object):
     '''
@@ -47,9 +47,10 @@ class ConvertLokiRuns(object):
         :return: Detector map
         '''
         if self.detectorMapFile is not "":
-            with open(self.detectorMapFile, "rb") as f:
-                contents = list(csv.reader(f, delimiter=","))
+            with open(self.detectorMapFile, "rb") as map:
+                contents = list(csv.reader(map, delimiter=","))
                 contents = numpy.array(contents).astype(int)
+
                 realid = contents[:, 0]
                 id = contents[:, 1]
                 detectormap = {}

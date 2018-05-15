@@ -11,10 +11,6 @@ class LOKIGenerator(object):
         self.pi = math.pi
         self.piDiv = self.pi / 180.0
 
-    def __del__(self):
-        self.outFile.close()
-        self.mapFile.close()
-
     def _writeInstrumentHeader(self):
         self.outFile.write("<?xml version='1.0' encoding='ASCII'?>\n")
         self.outFile.write("<!-- For help on the notation used to specify an Instrument Definition File \n")
@@ -73,7 +69,7 @@ class LOKIGenerator(object):
         self.outFile.write("<idlist idname=\"monitors\">\n")
         self.outFile.write("\t<id val=\"" + str(monitorID) + "\" />\n")
         self.outFile.write("</idlist>\n\n")
-        self.mapFile.write("2496," + str(monitorID))
+        self.mapFile.write("2496," + str(monitorID)+"\n")
 
     def _writeStructuredPanel(self, compIndex):
         component = self.extractor.getComponent(compIndex)
@@ -148,7 +144,7 @@ class LOKIGenerator(object):
             for j, idlist in enumerate(idlists):
                 start = idstart[i][j]
                 for k, id in enumerate(idlist):
-                    self.mapFile.write(str(int(id)) + "," + str(start + i) + "\n")
+                    self.mapFile.write(str(int(id)) + "," + str(start + k) + "\n")
 
     def generate(self):
         self._writeInstrumentHeader()
@@ -167,6 +163,8 @@ class LOKIGenerator(object):
         self._writeMonitors(monitorID)
         self._writeCompAssemblies()
         self._writeInstrumentFooter()
+        self.outFile.close()
+        self.mapFile.close()
 
 
 if __name__ == "__main__":

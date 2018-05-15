@@ -32,4 +32,4 @@ Steps:
  1. cd *PATH_TO_THIS_REPO_ON_YOUR_SYSTEM`
  2. PATH_TO_MANTID_INSTALL/bin/mantidpython.bat --classic ConvertData.py -d PATH_TO_FOLDER_WITH_RUNS -c coordinate.txt -n 1
 
-3. The current data produces by the in-kind group only contains one bank.
+3. The current data produced by the in-kind group only contains one bank.

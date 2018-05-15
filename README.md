@@ -33,5 +33,5 @@ optional arguments:
 
 Steps:
  1. cd `PATH_TO_THIS_REPO_ON_YOUR_SYSTEM`
- 2. `PATH_TO_MANTID_INSTALL/bin/mantidpython.bat` --classic ConvertData.py -d `PATH_TO_FOLDER_WITH_RUNS` -c coordinate.txt -n 1 -o `PATH_TO_DESIRED_OUTPUT_FOLDER`
+ 2. `PATH_TO_MANTID_INSTALL/bin/mantidpython` --classic ConvertData.py -d `PATH_TO_FOLDER_WITH_RUNS` -c coordinate.txt -n 1 -o `PATH_TO_DESIRED_OUTPUT_FOLDER`
 3. The current data produced by the in-kind group only contains one bank.

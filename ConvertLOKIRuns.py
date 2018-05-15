@@ -10,7 +10,7 @@ class ConvertLokiRuns(object):
     and loading the appropriate instrument.
     '''
 
-    def __init__(self, dataFolder, coordinateFile, IDF, detectorMapFile=""):
+    def __init__(self, dataFolder, coordinateFile, IDF, detectorMapFile="", outputFolder=""):
         '''
         Constructor
         :param dataFolder: Folder which contains LOKI runs as *.toff files
@@ -23,6 +23,10 @@ class ConvertLokiRuns(object):
         self.idf = IDF
         self.detectorMapFile = detectorMapFile
         self.ext = ".toff"
+        if outputFolder == "":
+            self.outFolder = dataFolder
+        else:
+            self.outFolder = outputFolder
 
     def _loadValidIDs(self):
         '''
@@ -116,7 +120,7 @@ class ConvertLokiRuns(object):
 
     def _saveNexusFiles(self):
         for wsName in self.wsNames:
-            outfile = os.path.join(self.folder, wsName + ".nxs")
+            outfile = os.path.join(self.outFolder, wsName + ".nxs")
             print "Saving ", outfile
             SaveNexus(wsName, outfile)
 
